@@ -29,18 +29,6 @@ class Counter extends Component {
     this.setState({stepValue: value});
   }
 
-
-  // resetCounter = () => {
-  //     console.log('zresetuj counter');
-  //     this.setState({counterValue: 0});
-  // }
-  /* Czym powyższe różni się od : changeNumber = () {} */
-
-  // initCounter = () => {
-  //     console.log('ustaw initValue');
-  //     this.setState({counterValue: this.props.initValue});
-  // }
-
   resetCounter = (reset) => {
     if (reset) {
       this.setState({ counterValue: 0 });
@@ -49,8 +37,6 @@ class Counter extends Component {
       console.log('ustaw initValue');
       this.setState({ counterValue: this.props.initValue });
     }
-
-
   }
 
 
@@ -61,7 +47,7 @@ class Counter extends Component {
     return (
       <div className="counter">
         <label>This is Counter: {this.state.counterValue} </label>
-        <Buttons resetCounter={this.resetCounter} changeCounterValue={this.changeNumber} />
+        <Buttons stepValue= {this.stepValue} resetCounter={this.resetCounter} changeCounterValue={this.changeNumber} />
         <Step handleInputChange={this.handleInputChange} />
       </div>
     );
@@ -74,8 +60,6 @@ export default Counter;
 function example () = {'...return('');'}
 const example = () => {'...return('');'}
 Jeżeli masz tylko jedną linię można pominąć klamry w ES6: const example = () => '' ;
-
-
 Z if też tak można robić, jedną linijkę np.: if (true) = smth... bez klamer
 
 */
