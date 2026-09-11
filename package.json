@@ -2,48 +2,27 @@
   "name": "react-counter",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "homepage": "https://Mateusz-Adamek.github.io/react-example-pages",
   "dependencies": {
     "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "react-scripts": "5.0.1"
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^6.1.1",
+    "gh-pages": "^6.3.0",
+    "jsdom": "^30.0.1",
+    "vite": "^8.3.0",
+    "vitest": "^5.0.0"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
+    "dev": "vite",
+    "start": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "test:watch": "vitest",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
-  "overrides": {
-    "nth-check": "^2.1.1",
-    "serialize-javascript": "^7.0.5",
-    "svgo": "^3.3.2",
-    "postcss": "^8.5.6",
-    "underscore": "^1.13.7",
-    "uuid": "^11.1.0",
-    "express": "^4.22.2",
-    "qs": "^6.16.0",
-    "jsonpath": "^1.1.1",
-    "bfj": "^9.1.2",
-    "sockjs": "^0.3.24",
-    "@tootallnate/once": "^2.0.1",
-    "http-proxy-agent": "^5.0.0"
+    "deploy": "gh-pages -d dist"
   }
 }
