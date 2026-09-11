@@ -25,7 +25,7 @@ updates:
         patterns:
           - "react"
           - "react-dom"
-      # Everything else here is build tooling pulled in by react-scripts.
+      # Everything else is build and lint tooling (vite, vitest, eslint).
       build-tooling:
         applies-to: version-updates
         patterns:
@@ -33,3 +33,17 @@ updates:
         exclude-patterns:
           - "react"
           - "react-dom"
+
+  # Keep the CI workflow's actions current too.
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    open-pull-requests-limit: 3
+    commit-message:
+      prefix: "chore(ci)"
+    groups:
+      actions:
+        patterns:
+          - "*"
