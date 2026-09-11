@@ -26,7 +26,8 @@ class Counter extends Component {
   handleInputChange = (event) => {
     let value = parseInt(event.target.value);
     console.log('dodano wartość ustawioną');
-    this.setState({stepValue: value});
+    // Pole może być puste (parseInt zwraca wtedy NaN), co psuło licznik
+    this.setState({stepValue: Number.isNaN(value) ? 0 : value});
   }
 
   resetCounter = (reset) => {
@@ -47,7 +48,7 @@ class Counter extends Component {
     return (
       <div className="counter">
         <label>This is Counter: {this.state.counterValue} </label>
-        <Buttons stepValue= {this.stepValue} resetCounter={this.resetCounter} changeCounterValue={this.changeNumber} />
+        <Buttons stepValue={this.state.stepValue} resetCounter={this.resetCounter} changeCounterValue={this.changeNumber} />
         <Step handleInputChange={this.handleInputChange} />
       </div>
     );
