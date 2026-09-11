@@ -1,0 +1,35 @@
+version: 2
+
+updates:
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    # Without a cap this repo accumulated 21 stale PRs over four years.
+    open-pull-requests-limit: 3
+    commit-message:
+      prefix: "chore(deps)"
+      include: "scope"
+    groups:
+      # All security fixes land in a single PR so they stay reviewable
+      # together instead of arriving as one PR per transitive package.
+      security:
+        applies-to: security-updates
+        patterns:
+          - "*"
+      # React itself is worth reviewing on its own — it is the only
+      # runtime dependency that reaches the browser.
+      react:
+        applies-to: version-updates
+        patterns:
+          - "react"
+          - "react-dom"
+      # Everything else here is build tooling pulled in by react-scripts.
+      build-tooling:
+        applies-to: version-updates
+        patterns:
+          - "*"
+        exclude-patterns:
+          - "react"
+          - "react-dom"
